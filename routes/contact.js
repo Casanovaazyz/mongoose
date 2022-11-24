@@ -11,8 +11,6 @@ ContactRouter.post('/',Addcontact)
 
 //route put or update a user 
 ContactRouter.delete('/:id',deleteContact)
-
-
 // put 
 ContactRouter.put('/:id',updatecontact)
 

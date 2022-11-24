@@ -24,19 +24,25 @@ exports.Addcontact=(req,res)=>{
 }
 
 
-exports.deleteContact =async (req,res)=>{
-try{
-
-}catch(err){
-    console.log(err)
-}
-}
+exports.deleteContact =(req,res)=>{
+    try{
+        const {id}= req.params
+        const deleteuser = ContactSchema.findByIdAndDelete(id)
+        res.status(200).send('yes you did it')
+         
+        }catch(err){
+        res.status(500).send('could not delete') 
+        }
+    }
 
 
 exports.updatecontact = async(req,res)=>{
     try{
-        
+        const {id}= req.params
+        const updateContact = await  ContactSchema.findByIdAndUpdate(id,{$set:{...req.body}})
+        res.status(200).send('the user is updated',updateContact)
+
     }catch(err){
-        console.log(err)
+        res.status(500).send('you couldnt update it')
     }
 }
